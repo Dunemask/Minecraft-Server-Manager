@@ -1,0 +1,21 @@
+{
+  "name": "minecraft-server-manager",
+  "version": "1.0.0",
+  "description": "Simple Webapp to manage multiple minecraft servers",
+  "main": "server.js",
+  "scripts": {
+    "test": "nodemon server.js"
+  },
+  "author": "Dunemask",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "express": "^4.17.1",
+    "express-react-views": "^0.11.0",
+    "express-session": "^1.17.1",
+    "fs": "0.0.1-security",
+    "multer": "^1.4.2",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1"
+  }
+}
