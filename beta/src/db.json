@@ -1,4 +1,15 @@
 {
-  "username":"admin",
-  "password":"password"
+ "username": "admin",
+ "password": "password",
+ "ramCapacity": "8192",
+ "servers": [
+  "server1": {
+   "ram": "1024",
+   "jar":"vanilla-1.15.2.jar",
+   "plugins": [
+    "manhunt",
+    "zombie"
+   ]
+  ]
+ }
 }

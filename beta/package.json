@@ -4,7 +4,7 @@
   "description": "Simple Webapp to manage multiple minecraft servers",
   "main": "server.js",
   "scripts": {
-    "test": "nodemon server.js"
+    "test": "nodemon server.js --ignore 'src/db.json'"
   },
   "author": "Dunemask",
   "license": "ISC",

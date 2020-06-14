@@ -9,12 +9,43 @@ const port = 3000;
 const debuggingMode = false;
 const viewOptions = { beautify: false };
 const dbLocation = 'src/db.json';
+global.serverInstances=[];
 //Setup DB
 var db = JSON.parse(fs.readFileSync(dbLocation));
 function updateDB(){
   let data=JSON.stringify(db,null,1);
   fs.writeFileSync(dbLocation, data);
 }
+
+function createWorld(name,ram,jar,plugins){
+  //Check for Duplicates
+  for(s in db.servers){
+    if(s==name){
+      return false;
+    }
+  }
+  //Create Server
+  db['servers'].push(
+    "name":{
+      "ram":ram,
+      "jar":jar,
+      "plugins":plugins
+    }
+    return true;
+}
+
+function deleteWorld(name,keepFiles){ //TODO
+  delete db['servers'].splice(db['servers'], 1);;
+  if(!keepFiles){
+    console.log("Would Remove World Files")
+  }
+}
+
+function initializeBackend(){
+  console.log(db.servers.length)
+
+}
+initializeBackend();
 //Set Up Express session and View engine
 app.use(session({secret: 'ssshhhhh',saveUninitialized: false,resave: false}));
 app.use(express.static('src/public/', {dotfiles:'deny'} ))
@@ -29,7 +60,7 @@ app.get('/', checkCredentials, function (req, res) {
 });
 
 app.get('/control-panel', checkCredentials, function (req, res) {
-    res.render('ControlPanel.jsx');
+    res.render('ControlPanel.jsx',{serverInstances:serverInstances});
 });
 
 //Upload Events
@@ -70,6 +101,7 @@ app.get('/login', function (req, res) {
       res.render('Login.jsx');
 });
 function checkCredentials(req, res, next) {
+    req.session.user_id=0;
     if (req.session.user_id!=undefined || req.path==='/login') {
         next();
     } else {
