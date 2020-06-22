@@ -3,6 +3,7 @@ const session = require('express-session');
 const bodyParser = require('body-parser');
 const fs = require('fs');
 const multer  = require('multer')
+const shell = require('shelljs');
 //Define Constants
 const app = express()
 const port = 3000;
@@ -45,6 +46,12 @@ function initializeBackend(){
   console.log(db.servers.length)
 
 }
+
+function startWorld(name){
+
+    
+  let runningServer = shell.exec('someBinary --whatever', { async: true });
+}
 initializeBackend();
 //Set Up Express session and View engine
 app.use(session({secret: 'ssshhhhh',saveUninitialized: false,resave: false}));
@@ -70,6 +77,7 @@ app.post('/uploadWorld',checkCredentials,function(req,res){
 app.post('/credentialsChange',checkCredentials,function(req,res){
 
 });
+
 
 app.get('/worldDownload',checkCredentials, function (req, res){
     let path = req.originalUrl.substring(23,req.originalUrl.length)
