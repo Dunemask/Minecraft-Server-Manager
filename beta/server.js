@@ -20,38 +20,50 @@ function updateDB(){
 
 function createWorld(name,ram,jar,plugins){
   //Check for Duplicates
-  for(s in db.servers){
-    if(s==name){
+  for(i in db.servers){
+    if(db.servers[i].name==name){
       return false;
     }
   }
   //Create Server
   db['servers'].push(
-    "name":{
+      {
+      "name":name,
       "ram":ram,
       "jar":jar,
       "plugins":plugins
-    }
+    })
     return true;
 }
 
 function deleteWorld(name,keepFiles){ //TODO
-  delete db['servers'].splice(db['servers'], 1);;
+  for(i in db.servers){
+    if(db.servers[i].name==name){
+      db.servers.splice(i, 1);
+      break;
+    }
+  }
   if(!keepFiles){
     console.log("Would Remove World Files")
   }
 }
 
-function initializeBackend(){
-  console.log(db.servers.length)
-
-}
 
 function startWorld(name){
 
-    
+
   let runningServer = shell.exec('someBinary --whatever', { async: true });
 }
+
+function initializeBackend(){
+  createWorld('Server1',8192,'Vanilla-1.15.2.jar',['manhunt','blockdisease']);
+  console.log(db.servers)
+  deleteWorld('Server1',false);
+  console.log(db.servers)
+
+
+}
+
 initializeBackend();
 //Set Up Express session and View engine
 app.use(session({secret: 'ssshhhhh',saveUninitialized: false,resave: false}));
