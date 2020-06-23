@@ -1,14 +1,14 @@
 var React = require('react');
-module.exports = class Overview extends React.Component {
+module.exports = class Settings extends React.Component {
   constructor(props) {
   super(props);
 
   }
   render() {
   return (
-    <div id="overview-wrapper">
-      <div id="overview">
-        
+    <div id="settings-wrapper">
+      <div id="settings">
+
       </div>
     </div>
   );

@@ -2,13 +2,29 @@ var React = require('react');
 var DefaultHead = require('./comps/DefaultHead');
 var Overview = require('./pages/Overview');
 var StartStop = require('./pages/StartStop');
+var Rcon = require('./pages/Rcon');
+var Settings = require('./pages/Settings');
 const title="Control Panel";
 let openPanel = "Overview";
 class ControlPanel extends React.Component {
   constructor(props) {
   super(props);
+    this.contentType=props.content;
+
   }
+
   render() {
+
+    pageContent(){
+      if(this.contentType=='rcon'){
+        return <Rcon ...this.props/>
+      }
+      if(this.contentType=='settings'){
+          return <Settings ...this.props/>
+      }
+      return <Overview ...this.props/>
+    }
+
   return (
     <html>
       <head>
@@ -26,7 +42,7 @@ class ControlPanel extends React.Component {
           </div>
         </div>
         <div className="content-wrapper">
-            <StartStop {...this.props.serverInstances}/>
+            {this.pageContent()}
         </div>
       </body>
     </html>
