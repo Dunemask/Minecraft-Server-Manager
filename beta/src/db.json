@@ -9,7 +9,7 @@
    "jar": "Vanilla-1.15.2.jar",
    "plugins": [
     "manhunt",
-    "blockdisease"
+    "zombie"
    ]
   }
  ]

@@ -53,6 +53,14 @@ function deleteWorld(name,keepFiles){ //TODO
 }
 
 function stopWorld(name){
+  for(i in global.serverInstances){
+    if(global.serverInstances[i].name==name){
+      global.serverInstances[i].process.kill();
+      return true;
+    }
+  }
+  return false;
+
 }
 
 
@@ -76,17 +84,27 @@ function startWorld(name){
     }
     fs.copyFileSync(`${jarsLocation}${server.jar}`, `${serverDir}${server.jar}`,fs.constants.COPYFILE_EXCL);
   }
+  if(!fs.existsSync(`${serverDir}plugins/`)){
+    fs.mkdirSync(`${serverDir}plugins/`);
+  }
+  
+  for(i in server.plugins){
+    if(!fs.existsSync(`${serverDir}plugins/${server.plugins[i]}.jar`)){
+      fs.copyFileSync(`${pluginsLocation}${server.plugins[i]}.jar`, `${serverDir}plugins/${server.plugins[i]}.jar`,fs.constants.COPYFILE_EXCL);
+    }
+  }
 
   if(!fs.existsSync(`${serverDir}${server.jar}`)){
     fs.copyFileSync(`${jarsLocation}${server.jar}`, `${serverDir}${server.jar}`,fs.constants.COPYFILE_EXCL);
   }
 
-  let runningServer = child_process.exec(`cd ${serverDir} && java -Xmx${server.ram}M -Xms${server.ram}M -jar ${server.jar} nogui`, { async: true });
-  global.serverInstances.push(runningServer);
+  global.serverInstances.push({ name:name,
+                                process:child_process.exec(`cd ${serverDir} && java -Xmx${server.ram}M -Xms${server.ram}M -jar ${server.jar} nogui`, { async: true })});
+  console.log('Running Server: '+name)
 }
 
 function initializeBackend(){
-  startWorld('Server1');
+
 
 }
 

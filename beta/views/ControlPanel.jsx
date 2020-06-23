@@ -1,6 +1,7 @@
 var React = require('react');
 var DefaultHead = require('./comps/DefaultHead');
-var Overview = require('./pages/Overiew');
+var Overview = require('./pages/Overview');
+var StartStop = require('./pages/StartStop');
 const title="Control Panel";
 let openPanel = "Overview";
 class ControlPanel extends React.Component {
@@ -8,9 +9,6 @@ class ControlPanel extends React.Component {
   super(props);
   }
   render() {
-  this.content = function(){
-    return (<Overview {...this.props.serverInstances}/>);
-  }
   return (
     <html>
       <head>
@@ -22,14 +20,13 @@ class ControlPanel extends React.Component {
           <div className="sidebar">
             <ul>
               <li><a href="/control-panel">Overview</a></li>
-              <li><a href="/start-and-stop">Start/Stop</a></li>
               <li><a href="/rcon">Rcon</a></li>
               <li><a href="/settings">Settings</a></li>
             </ul>
           </div>
         </div>
         <div className="content-wrapper">
-            {this.content}
+            <StartStop {...this.props.serverInstances}/>
         </div>
       </body>
     </html>
