@@ -2,5 +2,15 @@
  "username": "admin",
  "password": "password",
  "ramCapacity": "8192",
- "servers": []
+ "servers": [
+  {
+   "name": "Server1",
+   "ram": 2048,
+   "jar": "Vanilla-1.15.2.jar",
+   "plugins": [
+    "manhunt",
+    "blockdisease"
+   ]
+  }
+ ]
 }

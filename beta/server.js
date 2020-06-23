@@ -4,12 +4,16 @@ const bodyParser = require('body-parser');
 const fs = require('fs');
 const multer  = require('multer')
 const shell = require('shelljs');
+const child_process = require('child_process');
 //Define Constants
 const app = express()
 const port = 3000;
 const debuggingMode = false;
 const viewOptions = { beautify: false };
 const dbLocation = 'src/db.json';
+const serverLocation = 'server-manager/servers/';
+const pluginsLocation = 'server-manager/plugins/';
+const jarsLocation = 'server-manager/jars/';
 global.serverInstances=[];
 //Setup DB
 var db = JSON.parse(fs.readFileSync(dbLocation));
@@ -48,19 +52,41 @@ function deleteWorld(name,keepFiles){ //TODO
   }
 }
 
+function stopWorld(name){
+}
+
 
 function startWorld(name){
+  let server;
+  for(i in db.servers){
+    if(db.servers[i].name==name){
+      server=db.servers[i];
+      break;
+    }
+  }
+  if(!server){
+    return false;}
 
+  let serverDir=serverLocation+`${name}/`
 
-  let runningServer = shell.exec('someBinary --whatever', { async: true });
+  if(!fs.existsSync(serverDir)){
+    fs.mkdirSync(serverDir);
+    if(!fs.existsSync(`${serverDir}eula.txt`)){
+      fs.copyFileSync(`server-manager/default_eula.txt`, `${serverDir}eula.txt`,fs.constants.COPYFILE_EXCL);
+    }
+    fs.copyFileSync(`${jarsLocation}${server.jar}`, `${serverDir}${server.jar}`,fs.constants.COPYFILE_EXCL);
+  }
+
+  if(!fs.existsSync(`${serverDir}${server.jar}`)){
+    fs.copyFileSync(`${jarsLocation}${server.jar}`, `${serverDir}${server.jar}`,fs.constants.COPYFILE_EXCL);
+  }
+
+  let runningServer = child_process.exec(`cd ${serverDir} && java -Xmx${server.ram}M -Xms${server.ram}M -jar ${server.jar} nogui`, { async: true });
+  global.serverInstances.push(runningServer);
 }
 
 function initializeBackend(){
-  createWorld('Server1',8192,'Vanilla-1.15.2.jar',['manhunt','blockdisease']);
-  console.log(db.servers)
-  deleteWorld('Server1',false);
-  console.log(db.servers)
-
+  startWorld('Server1');
 
 }
 
