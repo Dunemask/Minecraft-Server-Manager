@@ -1,7 +1,6 @@
 var React = require('react');
 var DefaultHead = require('./comps/DefaultHead');
 var Overview = require('./pages/Overview');
-var StartStop = require('./pages/StartStop');
 var Rcon = require('./pages/Rcon');
 var Settings = require('./pages/Settings');
 const title="Control Panel";
@@ -10,19 +9,20 @@ class ControlPanel extends React.Component {
   constructor(props) {
   super(props);
     this.contentType=props.content;
-
+    this.props = props;
   }
 
   render() {
 
-    pageContent(){
+    this.pageContent = function(){
       if(this.contentType=='rcon'){
-        return <Rcon ...this.props/>
+        return <Rcon {...this.props}/>
       }
       if(this.contentType=='settings'){
-          return <Settings ...this.props/>
+          return <Settings {...this.props}/>
       }
-      return <Overview ...this.props/>
+
+      return <Overview {...this.props}/>
     }
 
   return (

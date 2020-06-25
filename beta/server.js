@@ -14,6 +14,7 @@ const dbLocation = 'src/db.json';
 const serverLocation = 'server-manager/servers/';
 const pluginsLocation = 'server-manager/plugins/';
 const jarsLocation = 'server-manager/jars/';
+let ramInUse = 0;
 global.serverInstances=[];
 //Setup DB
 var db = JSON.parse(fs.readFileSync(dbLocation));
@@ -56,9 +57,11 @@ function stopWorld(name){
   for(i in global.serverInstances){
     if(global.serverInstances[i].name==name){
       global.serverInstances[i].process.kill();
+      ramInUse-=global.serverInstances[i].server.ram;
       return true;
     }
   }
+
   return false;
 
 }
@@ -73,10 +76,12 @@ function startWorld(name){
     }
   }
   if(!server){
-    return false;}
+    return 'Server Not Found!';}
+  if(server.ram+ramInUser>db.ramCapacity){
+    return 'Launching a new Instance Uses Too Much Ram!'
+  }
 
   let serverDir=serverLocation+`${name}/`
-
   if(!fs.existsSync(serverDir)){
     fs.mkdirSync(serverDir);
     if(!fs.existsSync(`${serverDir}eula.txt`)){
@@ -87,7 +92,7 @@ function startWorld(name){
   if(!fs.existsSync(`${serverDir}plugins/`)){
     fs.mkdirSync(`${serverDir}plugins/`);
   }
-  
+
   for(i in server.plugins){
     if(!fs.existsSync(`${serverDir}plugins/${server.plugins[i]}.jar`)){
       fs.copyFileSync(`${pluginsLocation}${server.plugins[i]}.jar`, `${serverDir}plugins/${server.plugins[i]}.jar`,fs.constants.COPYFILE_EXCL);
@@ -98,8 +103,9 @@ function startWorld(name){
     fs.copyFileSync(`${jarsLocation}${server.jar}`, `${serverDir}${server.jar}`,fs.constants.COPYFILE_EXCL);
   }
 
-  global.serverInstances.push({ name:name,
+  global.serverInstances.push({ server:server,
                                 process:child_process.exec(`cd ${serverDir} && java -Xmx${server.ram}M -Xms${server.ram}M -jar ${server.jar} nogui`, { async: true })});
+  ramInUse+=global.serverInstances[i].server.ram;
   console.log('Running Server: '+name)
 }
 
@@ -123,7 +129,11 @@ app.get('/', checkCredentials, function (req, res) {
 });
 
 app.get('/control-panel', checkCredentials, function (req, res) {
-    res.render('ControlPanel.jsx',{serverInstances:serverInstances});
+    res.render('ControlPanel.jsx',{servers:db.servers,
+                                  ramCapacity:db.ramCapacity,
+                                  riu:ramInUse
+
+                                });
 });
 
 //Upload Events
