@@ -1,0 +1,77 @@
+body{
+    background-color: rgba(242,242,242,1)
+}
+
+h1 { font-family: "Dejavu Sans"; font-size: 24px; font-style: normal; font-variant: normal; font-weight: 700; line-height: 26.4px; } h3 { font-family: "Dejavu Sans"; font-size: 14px; font-style: normal; font-variant: normal; font-weight: 700; line-height: 15.4px; } p { font-family: "Dejavu Sans"; font-size: 14px; font-style: normal; font-variant: normal; font-weight: 400; line-height: 20px; } blockquote { font-family: "Dejavu Sans"; font-size: 21px; font-style: normal; font-variant: normal; font-weight: 400; line-height: 30px; } pre { font-family: "Dejavu Sans"; font-size: 13px; font-style: normal; font-variant: normal; font-weight: 400; line-height: 18.5714px; }
+
+.content-wrapper{
+  margin-left: 160px;
+  margin-top: 60px;
+}
+
+
+.page ul{
+  padding:0;
+  list-style-type: none;
+}
+
+.running-instances li{
+  display:inline-block;
+  white-space: nowrap;
+  background-color: white;
+  border-radius: 10px;
+}
+
+
+.all-servers-control > .all-servers-control-container{
+    overflow: hidden;
+    page-break-inside: avoid;
+    column-count: 2;
+}
+
+
+.created-server-container{
+  height:100%;
+  display:block;
+}
+.created-server{
+  display:inline-block;
+  white-space: nowrap;
+}
+
+.plugins-selector ul {
+  -moz-column-count: 3;
+-moz-column-gap: 20px;
+-webkit-column-count: 3;
+-webkit-column-gap: 20px;
+column-count: 3;
+column-gap: 20px;
+}
+
+.plugins-selector li{
+    white-space: nowrap;
+    text-align:justify;
+}
+
+#server-plugins-selector ul {
+    columns: 3;
+}
+
+
+
+
+.topbar{
+  position: fixed; /* Set the navbar to fixed position */
+  top: 0; /* Position the navbar at the top of the page */
+  width: 100%; /* Full width */
+  background-color: rgb(30,202,30);
+  height:60px;
+  white-space: nowrap;
+
+}
+.topbar h1{
+    margin-left: 160px;
+  font-size:28px;
+    color:white;
+
+}
