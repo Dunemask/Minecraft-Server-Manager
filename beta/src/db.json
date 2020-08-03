@@ -2,31 +2,5 @@
  "username": "admin",
  "password": "password",
  "ramCapacity": "8192",
- "servers": [
-  {
-   "name": "Derrick's Server",
-   "ram": "2048",
-   "jar": "Vanilla-1.16.jar",
-   "plugins": []
-  },
-  {
-   "name": "Friend Manhunt",
-   "ram": "2048",
-   "jar": "spigot-1.16.1.jar",
-   "plugins": [
-    "Manhunt.jar",
-    "ZombieApocalypse.jar"
-   ]
-  },
-  {
-   "name": "Family Server",
-   "ram": "2048",
-   "jar": "spigot-1.16.1.jar",
-   "plugins": [
-    "SiameseTrio.jar",
-    "Spooderman.jar",
-    "TornadosPlugin.jar"
-   ]
-  }
- ]
+ "servers": []
 }
