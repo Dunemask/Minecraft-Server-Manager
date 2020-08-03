@@ -176,8 +176,6 @@ cp.addListener('close', (evt) =>{
 }
 
 function initializeBackend(){
-  updateJarList();
-  updatePluginsList();
   if(!fs.existsSync('server-manager/')){
     fs.mkdirSync('server-manager/');}
   if(!fs.existsSync(serverLocation)){
@@ -186,7 +184,8 @@ function initializeBackend(){
     fs.mkdirSync(jarsLocation);}
   if(!fs.existsSync(pluginsLocation)){
     fs.mkdirSync(pluginsLocation);}
-
+  updateJarList();
+  updatePluginsList();
 }
 //Set Up Express session and View engine
 app.use(session({secret: 'ssshhhhh',saveUninitialized: false,resave: false}));
