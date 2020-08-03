@@ -16,6 +16,7 @@ const serverLocation = 'server-manager/servers/';
 const pluginsLocation = 'server-manager/plugins/';
 const jarsLocation = 'server-manager/jars/';
 const openExplorer = require('open-file-explorer');
+initializeBackend();
 let jarList=updateJarList();
 let pluginsList=updatePluginsList();
 let ramInUse = 0;
@@ -187,8 +188,6 @@ function initializeBackend(){
     fs.mkdirSync(pluginsLocation);}
 
 }
-
-initializeBackend();
 //Set Up Express session and View engine
 app.use(session({secret: 'ssshhhhh',saveUninitialized: false,resave: false}));
 app.use(express.static('src/public/', {dotfiles:'deny'} ))
