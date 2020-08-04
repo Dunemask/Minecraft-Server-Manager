@@ -102,3 +102,12 @@ dist
 
 # TernJS port file
 .tern-port
+
+#custom Ignore
+node_modules
+server-manager/jars/
+server-manager/plugins/
+server-manager/servers/
+package-lock.json
+
+
