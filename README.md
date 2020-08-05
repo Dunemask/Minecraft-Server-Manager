@@ -1,9 +1,9 @@
 # Minecraft Server Manager
 Minecraft Application for managing servers
 ## About
- This application was developed using a React front end and an express backend.
+ This application was developed using a React front end and an express back end.
 
-The manager is a tool to simplify and automate some of the redundant tasks of modifying servers frequently. It's very simple to drag and drop minecraft versions, plugins/mods, and worlds into the correct folders. 
+The manager is a tool to simplify and automate some of the redundant tasks of modifying servers frequently. It's very simple to drag and drop minecraft versions, plugins/mods, and worlds, and select them as dropdown options.
 
 ## Features
 
@@ -12,7 +12,6 @@ The manager is a tool to simplify and automate some of the redundant tasks of mo
 
 ### Easy Multi-Server Management
 ![Image Not Found](https://raw.githubusercontent.com/Dunemask/Minecraft-Server-Manager/master/images/Server-Management.png)
-
 
 
 ## Download and Run
@@ -42,7 +41,7 @@ The manager is a tool to simplify and automate some of the redundant tasks of mo
 1. Quit out of the commandline and close the application. 
 
 2. Download a spigot, forge or vanilla
- minecraft server jar and drop it into the folder
+ minecraft server [jar](https://www.minecraft.net/en-us/download/server) and drop it into the folder
 "Minecraft-Server-Manager" -> "server-manager" -> "jars"
 
 3. Reopen a command prompt and run
