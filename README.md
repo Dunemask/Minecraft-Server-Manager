@@ -61,6 +61,8 @@ The manager is a tool to simplify and automate some of the redundant tasks of mo
 * Admin Settings Page Frontend
 * Seemless server integration 
 
+Source Code: [Minecraft-Server-Manager](https://github.com/Dunemask/Minecraft-Server-Manager)
+
 
 
 
