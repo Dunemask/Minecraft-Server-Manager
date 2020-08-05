@@ -40,8 +40,8 @@ The manager is a tool to simplify and automate some of the redundant tasks of mo
 #### Post Setup
 1. Quit out of the commandline and close the application. 
 
-2. Download a spigot, forge or vanilla
- minecraft server [jar](https://www.minecraft.net/en-us/download/server) and drop it into the folder
+2. [Download](https://www.minecraft.net/en-us/download/server) a spigot, forge or vanilla
+ minecraft server jar and drop it into the folder
 "Minecraft-Server-Manager" -> "server-manager" -> "jars"
 
 3. Reopen a command prompt and run
