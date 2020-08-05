@@ -7,10 +7,10 @@ The manager is a tool to simplify and automate some of the redundant tasks of mo
 
 ## Features
 
-### Simplist Server Creation
+### Simplistic Server Creation
 ![Image Not Found](https://raw.githubusercontent.com/Dunemask/Minecraft-Server-Manager/master/images/Server-Creation.png)
 
-### Easy Multiple Server Management
+### Easy Multi-Server Management
 ![Image Not Found](https://raw.githubusercontent.com/Dunemask/Minecraft-Server-Manager/master/images/Server-Management.png)
 
 
@@ -25,6 +25,7 @@ The manager is a tool to simplify and automate some of the redundant tasks of mo
 3. A minecraft server jar to create your first server
 
 ### Download and Run
+#### From a command prompt run these commands in order:
 <div style="background-color:rgba(0, 0, 0, 0.0470588); text-align:left; padding:40px; border-radius:4px;">
 <div style="margin:auto;">
     git clone https://github.com/Dunemask/Minecraft-Server-Manager.git
