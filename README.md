@@ -39,13 +39,13 @@ The manager is a tool to simplify and automate some of the redundant tasks of mo
 </div>
 
 #### Post Setup
-Quit out of the commandline and close the application. 
+1. Quit out of the commandline and close the application. 
 
-Download a spigot, forge or vanilla
+2. Download a spigot, forge or vanilla
  minecraft server jar and drop it into the folder
 "Minecraft-Server-Manager" -> "server-manager" -> "jars"
 
-After this, reopen a command prompt and run
+3. Reopen a command prompt and run
 
 <div style="background-color:rgba(0, 0, 0, 0.0470588); text-align:left; padding:40px; border-radius:4px;">
 <div style="margin:auto;">
@@ -53,8 +53,7 @@ After this, reopen a command prompt and run
 </div>
 </div>
 
-open a browser
-and go to [localhost:3000](http://localhost:3000)
+4. Open a browser and go to [localhost:3000](http://localhost:3000)
 
 
 ## Planned Features
